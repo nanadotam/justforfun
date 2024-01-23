@@ -1,0 +1,45 @@
+---
+title: "Homework 1"
+author: "Nana Kwaku Amoako"
+date: "2024-01-20"
+output: word_document
+---
+
+```{r setup, message = FALSE}
+library(readr)
+H1N1_Flu_Vaccines <- read_delim("/Users/nanaamoako/Library/CloudStorage/OneDrive-AshesiUniversity/Ashesi/Year 2/January 2024 Semester/Statistics/Week 2/Assignments/H1N1_Flu_Vaccines.txt")
+library(MASS)
+?anorexia
+View(anorexia)
+
+```
+
+### Question 1
+```{r}
+## Summary of Results:
+## -------------------
+## The pie chart visually represents the distribution of respondent's levels of concern about the H1N1 flu. The chart shows that 30% of respondents reported being not concerned, 40% were somewhat concerned, and another 30% expressed very concerned. The legend provides additional clarity by displaying the exact percentage values for each category. This representation offers a quick and clear overview of the varying levels of concern within the surveyed population.
+
+
+```
+# Create a table
+t = table(H1N1_Flu_Vaccines$h1n1_concern);t
+
+# View the proportion of the total in each category 
+prop = prop.table(t);prop
+
+# View the percentage of the total in each category 
+percent = prop.table(t) * 100; percent
+
+# Round to one decimal place
+pf = round(percent, 1) ;pf
+
+# Label the percentages
+lbl = paste(c("Not at all concerned ", "Not very concerned ", "Somewhat concerned ", "Very concerned  "),pf,"%",sep="");lbl
+
+# Create a pie chart
+pie(t, label = lbl)
+
+# Add a title
+title(main = 'Respondents\' Level of Concern about H1N1 Flu')
+
